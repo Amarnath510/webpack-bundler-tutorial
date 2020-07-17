@@ -49,20 +49,13 @@
 - Since it is highly configurable hence we need to install and configure each dependency as required
 - Just installing `webpack` and its `cli` is not enough. We have to explicitly install 
 - **All Webpack dependencies - all for dev purpose**
-  - `npm i -D webpack webpack-cli`  // we have already installed this one
+  - `npm i -D webpack webpack-cli`  // we have already installed these two
   - `npm i -D webpack-dev-server`   // [webpack-dev-server](https://github.com/webpack/webpack-dev-server) for hot-reloading
-  - `npm i -D html-webpack-plugin`  // [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) plugin for opening the start file
+  - `npm i -D html-webpack-plugin`  // [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) plugin for opening/creating the start file
   - `npm i -D clean-webpack-plugin` // [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin) to remove/clean your build folder
-  - 
+  - `npm i -D css-loader style-loader` // [css-loader](https://webpack.js.org/loaders/css-loader/) & [style-loader](https://webpack.js.org/loaders/style-loader/#root); These are needed if we use only CSS and these are also pre-requisites if we want to use Sass(which we will use in this project), so install these
+  - `npm i -D sass-loader sass` // [sass-loader](https://webpack.js.org/loaders/sass-loader/#root)
 - Create `webpack.config.js` file under project root. This is the heart of the `webpack`
-
-
-
-
-
-
-
-
 
 ## References
 - [Simple webpack tutorial](https://www.youtube.com/watch?v=3LZOL65sxhU)
