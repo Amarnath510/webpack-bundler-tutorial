@@ -1,5 +1,22 @@
 # Project Setup
 
+## Setup
+- `mkdir webpack-bundler-tutorial && cd webpack-bundler-tutorial`
+- `npm init` and use default values
+- Now let's create files like `index.html`, `index.js`, `sass`, `images` as required
+  ```
+  [app] -- package.json
+           [src] -- index.html
+                    index.js
+                    [javascript] -- calculate.js
+                          [sass] -- main.sass
+                                    [mixins] -- colors.scss
+                        [assets] -- [images] -- images
+                                    [data] -- any json files that are needed
+
+## Create config file (This is the heart of the bundler, it has every single detail)
+- Create `webpack.config.js` under project root
+
 ## Necessary Dependencies (After this section you will understand why Parcel is best for small projects)
 - `npm i -D webpack webpack-cli`  // Install these if not yet
 - `npm i -D webpack-dev-server`   // [webpack-dev-server](https://github.com/webpack/webpack-dev-server) for hot-reloading
