@@ -1,5 +1,6 @@
 $bg-pink: pink;
-$bg-light-gray: #f0f0f0;
+$font-light: #f0f0f0;
+$font-dark: #303a52;
 
 *,
 *::before,
@@ -11,13 +12,21 @@ $bg-light-gray: #f0f0f0;
 
 html, body {
   height: 100%;
+  font-family: cursive, sans-serif;
+  font-size: 87.5%;
 }
 
 .header {
   height: 100vh;
-  background-image: url('/src/assets/images/music-player.svg');
+  background-image: url('/src/assets/images/before_dawn.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  color: $bg-light-gray;
+  color: $font-dark;
+}
+
+h1 {
+  padding-top: 16px;
+  font-size: 4rem;
+  text-align: center;
 }
