@@ -49,7 +49,15 @@
   ```
 - **Testing**
     - `npm run build` - this should create a distribution(dist) directory and bundle JS code there
-    - You can check console statement in `dist/bundle.js` 
+    - You can check console statement in `dist/bundle.js`
+    - **Bonus:** Create a directory `src/javascript` and add [calculate.js](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/src/javascript/calculate.js) file in it. Import it in your main JS file `index.js` as below,
+      ```
+      ...
+      import { multiplyTwoNumbers } from './javascript/calculate';
+      console.log('multiplyTwoNumbers(10, 20) = ', multiplyTwoNumbers(10, 20));
+      ...
+      ```
+    - Run the build again and see `bundle.js` file for the imported method
 
 ## Install [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)
 - `npm i -D html-webpack-plugin`
@@ -134,26 +142,58 @@
   ```
 - **Testing**
     - `npm run dev` -- open http://localhost:8080/ and see how the styling has changed
-    - 
-
-
-- Also install `bootstrap` just to test external vendors
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    - We can also include external stylinging like `bootstrap` (`npm i -D bootstrap`)
+    - In `main.scss` import the bootstrap file
+      ```
+      @import '~bootstrap/scss/bootstrap'; // ~(tilde) = ./node_modules/
+      // We are just including the root bootstrap file which has imported all partials in our main styling file
+      // trying using some class like 'container' of bootstrap and test it
+      ```
+      
+## Install [html-loader](https://webpack.js.org/loaders/html-loader/), [file-loader](https://webpack.js.org/loaders/file-loader/)
+- Until now we have bundled Javascript, Sass files, but what about images(svg, png, jpeg, jpg .. )? How do we bundled these files?
+- `npm i -D html-loader file-loader` // read documentation for details and usage
+- [html-loader](https://webpack.js.org/loaders/html-loader/) is used to load images from `dist` which are included in the HTML using `img` tag
+- But first of all we have to load to assets(images) to `dist`. How do we do that? => Using [file-loader](https://webpack.js.org/loaders/file-loader/)
+- Let's configure these changes to our config file,
+  ```
+  -- we already defined rules for scss files, append the below rules to the rules array
+  ...
+  {
+    test: /\.html$/i,    // if file ends with .html then use html-loader
+    use: ['html-loader']
+  },
+  {
+    test: /\.(svg|png|jpg|gif)$/i,  // if file ends with .svg|png|.. then use file-loader
+    use: [
+      {
+        loader: 'file-loader',
+      }
+    ]
+  }
+  ...
+  ```
+- Create `src/assets` & `src/assets/images`. Add any svg/png file under it. Refer [project structure](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/project-setup.md#final-project-structure)
+- In index.html add a image tag, (**NOTE** the path of the image in below two cases)
+  ```
+  <img src="assets/images/music-player.svg"/>
+  ```
+  OR in scss file add as below,
+  ```
+  background-image: url('/src/assets/images/before_dawn.svg');
+  ```
+- **Testing**
+  - `npm run dev` to see the image on the display
+  
+## Install [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin)
+- Every time when build is generated it has to be clean and should not contain any unwanted or unused files from previous build. This plugin helps us to do that
+- `npm i -D clean-webpack-plugin`
+- Update the config file and include the plugin in the plugins array
+  ```
+  const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+  ...
+  plugins: [
+    new CleanWebpackPlugin(), // see documentation for more details
+    new HtmlWebpackPlugin({ template: 'src/index.html' })
+  ...
+  ```
