@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server",
     "build": "webpack",
     "start": "node server.js",
-    "heroku-postbuild": "parcel build src/index.html"
+    "heroku-postbuild": "webpack"
   },
   "author": "Amarnath510",
   "license": "ISC",
