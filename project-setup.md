@@ -183,7 +183,7 @@
   ```
   OR in `main.scss` file add,
   ```
-  background-image: url('/src/assets/images/before_dawn.svg');
+  background-image: url('../assets/images/before_dawn.svg');
   ```
 - **Testing**
   - `npm run dev` to see the image on the display
@@ -206,3 +206,6 @@
 - [Loaders, CSS, Sass, Bootstrap](https://www.youtube.com/watch?v=rrMGUnBmjwQ&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8&index=5)
 - [Html-loader, File-loader, & Clean-webpack](https://www.youtube.com/watch?v=mnS_1lolc44&list=RDCMUCrqAGUPPMOdo0jfQ6grikZw)
 - [Codedamn webpack tutorial](https://www.youtube.com/watch?v=AHsP4JjvITg&list=PLYxzS__5yYQl9-x04VPyDecyPdNPAPmFQ&index=1)
+
+## For deployment in Heroku
+- Refer https://github.com/Amarnath510/webpack-bundler-tutorial#running-in-productionheroku
