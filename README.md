@@ -7,6 +7,7 @@
   - Minifies files
   - In-built live server => hot reloading
 - Webpack is `highly configurable` that is the reason it is used in huge projects
+- NOTE: Any bundler generates a `dist`(or you can name it wantever you want) folder which should contain everything related to the project such that we can distribute it to others to run. Make sure nothing in the dist is dependent outside of the distribution directory.
 
 <img width="1035" alt="webpack-bundler" src="https://user-images.githubusercontent.com/4599623/87679657-12a64900-c79a-11ea-80cd-b63d192f6885.png">
 
@@ -43,21 +44,18 @@
                     [js] -- main.js
                     [sass] -- main.sass
                               [mixins] -- colors.scss
-                    [images] -- images
+                    [assets] -- [images] - images
+                                [data] -- some json files
   ```
 - Unlike [Parcel bundler](https://github.com/Amarnath510/parcel-bundler-tutorial) which has zero configurations, for webpack we need to do `dev installations` and add config file
 - Since it is highly configurable hence we need to install and configure each dependency as required
-- Just installing `webpack` and its `cli` is not enough. We have to explicitly install 
-- **All Webpack dependencies - all for dev purpose**
-  - `npm i -D webpack webpack-cli`  // we have already installed these two
-  - `npm i -D webpack-dev-server`   // [webpack-dev-server](https://github.com/webpack/webpack-dev-server) for hot-reloading
-  - `npm i -D html-webpack-plugin`  // [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) plugin for opening/creating the start file
-  - `npm i -D clean-webpack-plugin` // [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin) to remove/clean your build folder
-  - `npm i -D css-loader style-loader` // [css-loader](https://webpack.js.org/loaders/css-loader/) & [style-loader](https://webpack.js.org/loaders/style-loader/#root); These are needed if we use only CSS and these are also pre-requisites if we want to use Sass(which we will use in this project), so install these
-  - `npm i -D sass-loader sass` // [sass-loader](https://webpack.js.org/loaders/sass-loader/#root)
-- Create `webpack.config.js` file under project root. This is the heart of the `webpack`
+- Create `webpack.config.js` file under project root. This is the heart of the bundler
+- Refer dependencies installation and each dependency usage in [project-setup.md](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/project-setup.md)
+
 
 ## References
 - [Simple webpack tutorial](https://www.youtube.com/watch?v=3LZOL65sxhU)
-- [codedamn webpack tutorial](https://www.youtube.com/watch?v=AHsP4JjvITg&list=PLYxzS__5yYQl9-x04VPyDecyPdNPAPmFQ&index=1)
+- [Loaders, CSS, Sass, Bootstrap](https://www.youtube.com/watch?v=rrMGUnBmjwQ&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8&index=5)
+- [Html-loader, File-loader, & Clean-webpack](https://www.youtube.com/watch?v=mnS_1lolc44&list=RDCMUCrqAGUPPMOdo0jfQ6grikZw)
+- [Codedamn webpack tutorial](https://www.youtube.com/watch?v=AHsP4JjvITg&list=PLYxzS__5yYQl9-x04VPyDecyPdNPAPmFQ&index=1)
 
