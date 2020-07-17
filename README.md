@@ -27,31 +27,14 @@
 ### Plugins
 - While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.
 
+### Config and Project Setup
+- Unlike [Parcel bundler](https://github.com/Amarnath510/parcel-bundler-tutorial) which has zero configurations, for webpack we need to do `several installations` and configure as required
+- We'll create `webpack.config.js` under project root and this serves as the heart of the bundler
+- Refer setup, dependencies installation, how to run etc in [project-setup.md](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/project-setup.md)
 
-## Setup
-- `mkdir webpack-bundler-tutorial && cd webpack-bundler-tutorial`
-- `npm init` and use default values
-
-## Install webpack as dev dependency
-- `npm i -D webpack webpack-cli`   // Webpack is only needed during development and for generating a build which we can use in Prod
-
-## Create config file
-- Now let's create a bunch of files like `index.html`, `main.js`, `main.scss` etc
-  ```
-  [app] -- package.json
-           webpack.config.js
-           [src] -- index.html
-                    [js] -- main.js
-                    [sass] -- main.sass
-                              [mixins] -- colors.scss
-                    [assets] -- [images] - images
-                                [data] -- some json files
-  ```
-- Unlike [Parcel bundler](https://github.com/Amarnath510/parcel-bundler-tutorial) which has zero configurations, for webpack we need to do `dev installations` and add config file
-- Since it is highly configurable hence we need to install and configure each dependency as required
-- Create `webpack.config.js` file under project root. This is the heart of the bundler
-- Refer dependencies installation and each dependency usage in [project-setup.md](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/project-setup.md)
-
+### Running in Production(Heroku)
+- [Just like how we have used 'express' for Parcel app we will use the same process here.](https://github.com/Amarnath510/parcel-bundler-tutorial#deploy-parcel-build-in-heroku-same-process-for-webpack-too-actually-this-example-is-from-webpack-source-)
+- Hit, https://webpack-simple-tutorial.herokuapp.com/
 
 ## References
 - [Simple webpack tutorial](https://www.youtube.com/watch?v=3LZOL65sxhU)
