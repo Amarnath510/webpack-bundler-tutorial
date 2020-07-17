@@ -23,7 +23,7 @@
 
 ## webpack changes explained step-by-step
 - **NOTE: Webpack documentation is amazing. Almost all details which are mentioned in config file are present in each dependency documenation.**
-- All installations are dev dependencies
+- Install all dependencies as `dev`
 
 ## Install 'webpack' and 'webpack-cli'
 - `npm i -D webpack webpack-cli`
@@ -41,16 +41,16 @@
     }
   }
   ```
-- Specify that build should happen using `webpack` in `package.json`
+- Set `build` to use `webpack` in `package.json`
   ```
   "scripts": {
     "build": "webpack"
   },
   ```
 - **Testing**
-    - `npm run build` - this should create a distribution(dist) directory and bundle JS code there
+    - `npm run build` - this should create a distribution(`dist`) directory and bundle JS code there
     - You can check console statement in `dist/bundle.js`
-    - **Bonus:** Create a directory `src/javascript` and add [calculate.js](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/src/javascript/calculate.js) file in it. Import it in your main JS file `index.js` as below,
+    - **Bonus:** Create a directory `src/javascript` and add [calculate.js](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/src/javascript/calculate.js) file in it. Import it in your main JS file, `index.js` as below
       ```
       ...
       import { multiplyTwoNumbers } from './javascript/calculate';
@@ -88,9 +88,9 @@
     - Run build again. Now you can see in `dist/index.html` the content which you added to the HTML and `bundle.js` is included in the HTML
     
 ## Install [webpack-dev-server](https://github.com/webpack/webpack-dev-server) for hot-reloading
-- It's time to run the application and see any content changes on the fly
+- It's time to run the application and add hot reloading
 - `npm i -D webpack-dev-server`
-- Run the server through script
+- Add dev-server to package scripts,
   ```
   "scripts": {
     "dev": "webpack-dev-server",
@@ -138,24 +138,27 @@
 - Hence include this in the root JS file i,e, in `index.js`
   ```
   import './sass/main.scss'
+  
+  ...
+  
   console.log(123456)
   ```
 - **Testing**
     - `npm run dev` -- open http://localhost:8080/ and see how the styling has changed
-    - We can also include external stylinging like `bootstrap` (`npm i -D bootstrap`)
+    - **Bonus**: Include external stylinging like `bootstrap` (`npm i -D bootstrap`)
     - In `main.scss` import the bootstrap file
       ```
       @import '~bootstrap/scss/bootstrap'; // ~(tilde) = ./node_modules/
-      // We are just including the root bootstrap file which has imported all partials in our main styling file
-      // trying using some class like 'container' of bootstrap and test it
+      // We are just including the root bootstrap file which has imported all bootstrap partials in our main styling file .. open the file to see the code
+      // Try using some bootstrap class like 'container' (add it to body element) to test the changes
       ```
       
 ## Install [html-loader](https://webpack.js.org/loaders/html-loader/), [file-loader](https://webpack.js.org/loaders/file-loader/)
-- Until now we have bundled Javascript, Sass files, but what about images(svg, png, jpeg, jpg .. )? How do we bundled these files?
+- Until now we have bundled Javascript & Sass files but what about images(svg, png, jpeg, jpg .. ) or any other files? How do we bundled these files?
 - `npm i -D html-loader file-loader` // read documentation for details and usage
 - [html-loader](https://webpack.js.org/loaders/html-loader/) is used to load images from `dist` which are included in the HTML using `img` tag
-- But first of all we have to load to assets(images) to `dist`. How do we do that? => Using [file-loader](https://webpack.js.org/loaders/file-loader/)
-- Let's configure these changes to our config file,
+- But first of all we have to load assets(images) to `dist`. How do we do that? Using [file-loader](https://webpack.js.org/loaders/file-loader/)
+- Let's configure these changes in our config file,
   ```
   -- we already defined rules for scss files, append the below rules to the rules array
   ...
@@ -174,11 +177,11 @@
   ...
   ```
 - Create `src/assets` & `src/assets/images`. Add any svg/png file under it. Refer [project structure](https://github.com/Amarnath510/webpack-bundler-tutorial/blob/master/project-setup.md#final-project-structure)
-- In index.html add a image tag, (**NOTE** the path of the image in below two cases)
+- In `index.html` add a image tag, (**NOTE** the path of the image in below two cases)
   ```
   <img src="assets/images/music-player.svg"/>
   ```
-  OR in scss file add as below,
+  OR in `main.scss` file add,
   ```
   background-image: url('/src/assets/images/before_dawn.svg');
   ```
@@ -188,7 +191,7 @@
 ## Install [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin)
 - Every time when build is generated it has to be clean and should not contain any unwanted or unused files from previous build. This plugin helps us to do that
 - `npm i -D clean-webpack-plugin`
-- Update the config file and include the plugin in the plugins array
+- Update the config file and add the clean-plugin to `plugins` array
   ```
   const { CleanWebpackPlugin } = require('clean-webpack-plugin');
   ...
@@ -197,3 +200,9 @@
     new HtmlWebpackPlugin({ template: 'src/index.html' })
   ...
   ```
+  
+## References
+- [Simple webpack tutorial](https://www.youtube.com/watch?v=3LZOL65sxhU)
+- [Loaders, CSS, Sass, Bootstrap](https://www.youtube.com/watch?v=rrMGUnBmjwQ&list=PLblA84xge2_zwxh3XJqy6UVxS60YdusY8&index=5)
+- [Html-loader, File-loader, & Clean-webpack](https://www.youtube.com/watch?v=mnS_1lolc44&list=RDCMUCrqAGUPPMOdo0jfQ6grikZw)
+- [Codedamn webpack tutorial](https://www.youtube.com/watch?v=AHsP4JjvITg&list=PLYxzS__5yYQl9-x04VPyDecyPdNPAPmFQ&index=1)
