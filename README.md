@@ -35,3 +35,6 @@
 ### Running in Production(Heroku)
 - [Just like how we have used 'express' for Parcel app we will use the same process here.](https://github.com/Amarnath510/parcel-bundler-tutorial#deploy-parcel-build-in-heroku-same-process-for-webpack-too-actually-this-example-is-from-webpack-source-)
 - Hit, https://webpack-simple-tutorial.herokuapp.com/
+
+<img width="1166" alt="webpack-bundler-heroku" src="https://user-images.githubusercontent.com/4599623/87852322-85403180-c91e-11ea-89a5-2cc97e5456ab.png">
+
